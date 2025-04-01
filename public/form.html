@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Share Your Achievement</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('background.jpg') no-repeat center center/cover;
+      background-image: linear-gradient(#f08945, #f56363);
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 300px;
+      flex-direction: column;
+    }
+    .nav-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .nav-buttons button {
+      background: #f1f1f1;
+      color: rgb(7, 7, 7);
+      border: 2px solid black;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .nav-buttons button:hover {
+      background: #f56b10;
+      color: rgb(248, 241, 241);
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+    h2 {
+      color: rgb(14, 12, 12);
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      font-weight: bold;
+      color: rgb(17, 15, 15);
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      background: rgba(255, 255, 255, 0.3);
+      color: rgb(12, 11, 11);
+    }
+    .btn {
+      background: #ff5722;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+      width: 100%;
+    }
+    .btn:hover {
+      background: #e64a19;
+    }
+    #auth-popup {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 100;
+    }
+    #auth-popup button {
+      margin-top: 10px;
+      padding: 10px;
+      background: orange;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .container {
+      background-color: rgb(253, 249, 249);
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+      try {
+        const response = await fetch("/check-auth", {
+          method: "GET",
+          credentials: "include",
+        });
+
+        const result = await response.json();
+        window.isLoggedIn = result.loggedIn; // Store login status globally
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+      }
+    });
+
+    async function handleSubmit(event) {
+      event.preventDefault(); // Prevent normal form submission
+
+      if (!window.isLoggedIn) {
+        document.getElementById("auth-popup").style.display = "block";
+        return;
+      }
+
+      alert("Achievement submitted successfully!");
+      document.getElementById("achievement-form").reset();
+    }
+
+    function redirectToSignup() {
+      window.location.href = "login.html"; // Redirect to login
+    }
+  </script>
+</head>
+<body>
+
+  <div class="nav-buttons">
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='login.html'">Login</button>
+    <button onclick="window.location.href='signup.html'">Sign Up</button>
+  </div>
+  
+  <div id="auth-popup">
+    <p>Please register or log in to fill the form.</p>
+    <button onclick="redirectToSignup()">Sign In</button>
+  </div>
+  
+  <div class="container">
+    <h2>Share Your Achievement</h2>
+    
+    <form id="achievement-form" onsubmit="handleSubmit(event)">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+      
+      <label for="title">Achievement Title:</label>
+      <input type="text" id="title" name="title" placeholder="Achievement title">
+      
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <option value="tech">Tech</option>
+        <option value="sports">Sports</option>
+        <option value="electro">Electronics</option>
+        <option value="other">Other</option>
+      </select>
+      
+      <label for="description">Describe Your Achievement:</label>
+      <textarea id="description" name="description" rows="4" placeholder="Write your achievement..."></textarea>
+      
+      <label for="challenges">Challenges Faced:</label>
+      <textarea id="challenges" name="challenges" rows="3" placeholder="Challenges faced..."></textarea>
+      
+      <label for="mistakes">Mistakes Made & How You Overcame Them:</label>
+      <textarea id="mistakes" name="mistakes" rows="3" placeholder="Your learnings..."></textarea>
+      
+      <label for="approach">Your Approach & Strategy:</label>
+      <textarea id="approach" name="approach" rows="3" placeholder="Your approach..."></textarea>
+      
+      <label for="lessons">Lessons Learned:</label>
+      <textarea id="lessons" name="lessons" rows="3" placeholder="Lessons learned..."></textarea>
+      
+      <label for="future-goals">Future Goals:</label>
+      <textarea id="future-goals" name="future-goals" rows="3" placeholder="Your future goals..."></textarea>
+      
+      <label for="advice">Advice for Others:</label>
+      <textarea id="advice" name="advice" rows="3" placeholder="Advice to others..."></textarea>
+      
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+
+</body>
+</html>

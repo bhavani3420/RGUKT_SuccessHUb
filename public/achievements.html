@@ -1,0 +1,46 @@
+<!-- achievements.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="achievements.js" defer></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; text-align: center; background: linear-gradient(135deg, #a8e6cf, #dcedc1); margin: 0; }
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; }
+        .card:hover { transform: scale(1.1); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); cursor: pointer; }
+        .card img { width: 100%; border-radius: 10px; transition: opacity 0.3s ease-in-out; }
+        .card:hover img { opacity: 0.8; }
+        .card h3 { margin: 10px 0; color: #333; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Achievements</h1>
+        <div class="achievements-grid" id="achievements-container"></div>
+    </div>
+
+
+
+<!-- achievements.js -->
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("achievements.json")
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById("achievements-container");
+            data.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `<img src="${item.image}" alt="Achievement"><h3>${item.title}</h3>`;
+                card.onclick = () => window.location.href = `blog.html?title=${encodeURIComponent(item.title)}&content=${encodeURIComponent(item.content)}`;
+                container.appendChild(card);
+            });
+        });
+});
+</body>
+</html>

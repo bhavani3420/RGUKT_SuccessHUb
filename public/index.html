@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGUKT Achievements Portal</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<body>
+<!-- Navbar -->
+<nav class="bg-white bg-opacity-90 text-black shadow-lg p-4 fixed w-full z-10 top-0">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo on the Left -->
+        <h1 class="text-2xl font-bold">RGUKT Success Hub</h1>
+
+        <!-- Navigation & Buttons on the Right -->
+        <div class="flex items-center space-x-6">
+            <a href="#" class="hover:underline hover:text-yellow-400 transition">Home</a>
+            
+            <!-- Dropdown Wrapper -->
+            <li class="relative group list-none">
+                <a href="#" class="hover:underline hover:text-yellow-400 transition">Achievements</a>
+                <ul class="absolute left-0 hidden group-hover:block bg-white text-black p-2 rounded shadow-lg w-40">
+                    <li><a href="sports.html" class="block px-4 py-2 hover:bg-gray-200">Sports</a></li>
+                    <li><a href="tech.html" class="block px-4 py-2 hover:bg-gray-200">Tech</a></li>
+                    <li><a href="electro.html" class="block px-4 py-2 hover:bg-gray-200">Electro</a></li>
+                </ul>
+            </li>
+
+            <a href="#" class="hover:underline hover:text-yellow-400 transition">Contact</a>
+
+            <!-- Auth Section -->
+            <div id="authSection" class="flex items-center space-x-4">
+                <!-- Authentication details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Carousel Section -->
+<div id="carousel" class="relative w-full h-screen overflow-hidden">
+    <div class="carousel-inner flex w-full h-full transition-transform duration-500 ease-in-out">
+        <!-- Slide 1 -->
+        <div class="carousel-item min-w-full h-full flex items-center justify-center text-center bg-cover bg-center"
+            style="background-image: url('rgukt.jpg');">
+            <div class="bg-black bg-opacity-50 w-full h-full flex flex-col justify-center items-center text-white px-6">
+                <h1 class="text-5xl font-extrabold mb-4">Explore Achievers' Stories</h1>
+                <p class="text-xl mb-6">Learn from their experiences & challenges.</p>
+                <button id="watch-btn" class="bg-yellow-500 hover:bg-yellow-600 transition duration-300 px-6 py-3 rounded-lg text-white text-lg shadow-md">Watch Achievements</button>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item min-w-full h-full flex items-center justify-center text-center bg-cover bg-center"
+            style="background-image: url('slide2.jpg');">
+            <div class="bg-black bg-opacity-50 w-full h-full flex flex-col justify-center items-center text-white px-6">
+                <h1 class="text-5xl font-extrabold mb-4">Discover Inspiring Journeys</h1>
+                <p class="text-xl mb-6">Read about the determination behind success.</p>
+                <button class="bg-yellow-500 hover:bg-yellow-600 transition duration-300 px-6 py-3 rounded-lg text-white text-lg shadow-md">View More</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Arrows -->
+    <button id="prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 text-white rounded-full">&#10094;</button>
+    <button id="next" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 text-white rounded-full">&#10095;</button>
+</div>
+
+<!-- JavaScript for Carousel Functionality -->
+<script>
+    const carouselInner = document.querySelector('.carousel-inner');
+    const slides = document.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        const offset = -index * 100;
+        carouselInner.style.transform = `translateX(${offset}%)`;
+    }
+
+    document.getElementById('next').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+    });
+</script>
+    <!--about Section-->
+  <main>
+    <div class="about">
+        <div class="content"></div>
+        <section class="about">
+            <div class="about-c">
+                <div class="about-text">
+                    <h2>A Platform to Showcase Inspiring Student Achievements!</h2>
+                    <p>
+                        At <strong>RGUKT Achievement Portal</strong>, we highlight success stories of our students—from hackathons to internships and research projects.  
+                        Our goal is to <strong>help others learn</strong> from real experiences by providing a structured explanation of how these achievements were earned.
+                    </p>
+                    <p>
+                        🌟 <em>Have an achievement to share?</em> Inspire others by submitting your success story! Click the button below, answer a few questions,  
+                        and if selected, we will feature it on our platform.
+                    </p>
+                    <a href="form.html" class="btn btn-primary">Share Your Achievement</a>
+                </div>
+        
+                <!-- Right Side Images -->
+                <div class="about-images">
+                    <img src="college1.avif" alt="Achievement 1" class="img1">
+                    <img src="college2.avif" alt="Achievement 2" class="img2">
+                    <img src="suc.jpg" alt="Achievement 3" class="img3">
+                </div>
+            </div>
+        </section>
+        </div></main>
+        
+
+
+    <!-- Cards Section -->
+    <section class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition">
+            <div class="h-56 bg-cover bg-center" style="background-image: url('college1.avif');"></div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold">Success Story: AI Research</h3>
+                <p class="text-gray-600 mt-2">How I secured a research internship at XYZ University.</p>
+                <a href="cseblog.html" class="text-blue-600 hover:underline mt-4 block">Read More</a>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition">
+            <div class="h-56 bg-cover bg-center" style="background-image: url('college2.avif');"></div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold">Winning a Hackathon</h3>
+                <p class="text-gray-600 mt-2">Challenges, experiences, and lessons from my first hackathon win.</p>
+                <a href="cseblog.html" class="text-blue-600 hover:underline mt-4 block">Read More</a>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition">
+            <div class="h-56 bg-cover bg-center" style="background-image: url('success.avif');"></div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold">Internship at Google</h3>
+                <p class="text-gray-600 mt-2">The journey of cracking Google’s internship program.</p>
+                <a href="cseblog.html" class="text-blue-600 hover:underline mt-4 block">Read More</a>
+            </div>
+        </div>
+    </section>
+    
+ <!-- Inspirational Section -->
+<section class="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-12 bg-gray-50 rounded-lg shadow-md">
+    <!-- Left Side Image (40%) -->
+    <div class="w-full md:w-2/5 flex justify-center">
+        <img src="success.avif" alt="Success Story" class="rounded-lg shadow-lg border-2 border-gray-300 max-w-full md:max-w-xs transform hover:scale-105 transition duration-300">
+    </div>
+
+    <!-- Right Side Quote & Button (60%) -->
+    <div class="w-full md:w-3/5 text-center md:text-left">
+        <blockquote class="text-2xl md:text-3xl font-semibold italic text-gray-800 relative">
+            <span class="text-5xl text-yellow-500 absolute -top-4 -left-6">“</span>
+            Hard work and dedication are the stepping stones to success. Keep striving!
+            <span class="text-5xl text-yellow-500 absolute -bottom-4 ">”</span>
+        </blockquote>
+        <p class="mt-4 text-gray-600 text-sm md:text-lg">
+            Read inspiring success stories and take your first step towards greatness.
+        </p>
+        <a href="#" class="mt-6 inline-block bg-yellow-500 hover:bg-yellow-600 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-md transform hover:scale-105 transition duration-300">
+            Explore Achievements
+        </a>
+    </div>
+</section>
+<!-- FAQ Section -->
+<section class="bg-gray-100 py-12">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Frequently Asked Questions</h2>
+
+        <div class="max-w-3xl mx-auto space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <button class="flex justify-between w-full text-lg font-semibold text-gray-800 hover:text-yellow-500 transition faq-btn">
+                    What is RGUKT Success Hub?
+                    <span class="text-xl">+</span>
+                </button>
+                <p class="hidden mt-2 text-gray-600 faq-content">It is a platform where students can showcase their achievements, including hackathons, internships, and projects.</p>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <button class="flex justify-between w-full text-lg font-semibold text-gray-800 hover:text-yellow-500 transition faq-btn">
+                    How can I submit my achievement?
+                    <span class="text-xl">+</span>
+                </button>
+                <p class="hidden mt-2 text-gray-600 faq-content">Click on the "Share Your Achievement" button and fill out the form with details about your accomplishment.</p>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="bg-white shadow-md rounded-lg p-4">
+                <button class="flex justify-between w-full text-lg font-semibold text-gray-800 hover:text-yellow-500 transition faq-btn">
+                    Who can view the achievements?
+                    <span class="text-xl">+</span>
+                </button>
+                <p class="hidden mt-2 text-gray-600 faq-content">Anyone visiting the website can explore and get inspired by the success stories of students.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Us Section -->
+<section class="bg-gray-50 py-12">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Contact Us</h2>
+
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+            <!-- Contact Form -->
+            <div class="bg-white shadow-lg rounded-lg p-8 w-full md:w-2/5">
+                <h3 class="text-xl font-semibold mb-6 text-gray-800">Send us a message</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1">Your Name</label>
+                        <input type="text" placeholder="Enter your name" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-yellow-400 transition">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1">Email</label>
+                        <input type="email" placeholder="Enter your email" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-yellow-400 transition">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1">Message</label>
+                        <textarea placeholder="Write your message..." rows="4" class="w-full p-3 border rounded-md focus:ring-2 focus:ring-yellow-400 transition"></textarea>
+                    </div>
+                    <button class="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-md transition transform hover:scale-105">Send Message</button>
+                </form>
+            </div>
+
+            <!-- RGUKT Nuzvid Location Map -->
+            <div class="w-full md:w-3/5">
+                <iframe class="w-full h-80 rounded-lg shadow-md" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7647.848089575576!2d80.78910920764713!3d16.779185628614634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35ef5a2e7669a1%3A0x4d649b89bb3e46b4!2sRajiv%20Gandhi%20University%20of%20Knowledge%20Technologies%20Nuzvid!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Main Street, City</p>
+        </div>
+        <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Your Company. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {},
+        },
+    };
+</script>
+
+<!-- JavaScript for FAQ -->
+<script>
+    document.querySelectorAll('.faq-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            answer.classList.toggle('hidden');
+            button.querySelector('span').textContent = answer.classList.contains('hidden') ? '+' : '-';
+        });
+    });
+</script>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/check-auth")
+                .then(response => response.json())
+                .then(data => {
+                    const authSection = document.getElementById("authSection");
+                    authSection.innerHTML = ""; // Clear previous content
+    
+                    if (data.loggedIn) {
+                        authSection.innerHTML = `
+                            <span class="text-black font-semibold">${data.username}</span>
+                            <a href="/logout" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+                        `;
+                    } else {
+                        authSection.innerHTML = `
+                            <a href="login.html" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Login</a>
+                            <a href="signup.html" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Signup</a>
+                        `;
+                    }
+                })
+                .catch(error => console.error("Error fetching auth status:", error));
+        });
+    </script>
+    <!---script for dynamic urls-->
+   
+    
+</body>
+</html>

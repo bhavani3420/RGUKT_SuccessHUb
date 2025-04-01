@@ -1,0 +1,9 @@
+
+[
+    { "title": "Achievement 1", "image": "achievement1.jpg", "content": "This is the success story of Achievement 1." },
+    { "title": "Achievement 2", "image": "achievement2.jpg", "content": "Challenges faced and overcome in Achievement 2." },
+    { "title": "Achievement 3", "image": "achievement3.jpg", "content": "The journey of Achievement 3 in detail." },
+    { "title": "Achievement 4", "image": "achievement4.jpg", "content": "Expectations and results of Achievement 4." },
+    { "title": "Achievement 5", "image": "achievement5.jpg", "content": "Difficulties and successes of Achievement 5." },
+    { "title": "Achievement 6", "image": "achievement6.jpg", "content": "A deep dive into Achievement 6." }
+]
